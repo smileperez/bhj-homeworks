@@ -1,4 +1,4 @@
-// ЗАДАЧА 1
+// ЗАДАЧА 2
 // Находим элемент <img> для того что подписаться на клики
 const game = document.getElementById("cookie");
 
