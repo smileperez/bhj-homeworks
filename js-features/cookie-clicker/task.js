@@ -1,4 +1,4 @@
-
+// ЗАДАЧА 1
 // Находим элемент <img> для того что подписаться на клики
 const game = document.getElementById("cookie");
 
@@ -18,10 +18,13 @@ game.onclick = function() {
     counter.innerText++;
 
     // Чередуем уменьшение и увеличение печеньки при каждом клике
+    // Фиксируем реальные величины
+    const realWidth = game.width;
+    const realHeight = game.height;
     // Задаем таймаут, чтобы через 50 мс вернуть размеры картинки в изначальное положение
     let timeout = setTimeout(() => {
-                game.width = 200;
-                game.height = 128;
+                game.width = realWidth;
+                game.height = realHeight;
             },
         50);
     // Немедленно увеличиваем размеры картинки
