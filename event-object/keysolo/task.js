@@ -41,7 +41,7 @@ class Game {
           timer = 0;
           success = 0;
           // Обновляем время на front-end на 0, так как игра завершилась по таймауту.
-          document.querySelector(".status__time").innerHTML = 0;
+          document.querySelector(".status__time").innerHTML = timer;
           console.log(`Осталось времени ${timer} секунд`);
           console.log(`Попробуй еще!`);
         } else {
