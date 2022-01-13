@@ -31,7 +31,7 @@ class Game {
         console.error('Таймер уже существует!')
         return;
       }
-      // document.querySelector(".status__time").innerHTML = timer;
+   
       // Задаем таймер на уменьшение каждую секунду
       timerId = setInterval(() => {  
         // Если таймер подходит к концу - конец всей игры и все ресетим в ноль, останавилваем таймер, онуляем число успехов
