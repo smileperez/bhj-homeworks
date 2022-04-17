@@ -62,5 +62,7 @@ function control(collection, content, activeClass, param1, param2, param3) {
 // Запускаем управление
 // Управление размером шрифтов ()
 control(sizeControls, content, 'font-size_active', 'book_fs-big', 'book_fs-small');
+// Управление цветом шрифта ()
 control(colorControls, content, 'color_active', 'book_color-whitesmoke', 'book_color-black', 'book_color-gray');
+// Управление цветом фона ()
 control(backgroundControls, content, 'color_active', 'book_bg-white', 'book_bg-black', 'book_bg-gray');
