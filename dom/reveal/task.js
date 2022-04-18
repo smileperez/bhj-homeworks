@@ -19,21 +19,21 @@ let isInViewport = function(element) {
     }
 };
 
-// задаем функцию проверки видимости элемента при скроллинге страницы
-
+// задаем скрытия или открытия всех элементов
 function toggleElement(collection) {
 
     for (i = 0; i < collection.length; i++) {
         if (isInViewport(collection[i]) === true) {
             collection[i].classList.toggle('reveal_active');
-            console.log(`Появился ${i+1}`)
+            // console.log(`Появился ${i+1}`)
         } else {
             collection[i].classList.toggle('reveal_active');
-            console.log(`Скрылся ${i+1}`)
+            // console.log(`Скрылся ${i+1}`)
         }
     }
 }
 
+// вешаем функцию скрытия/открытия на событие скролла
 window.onscroll = function() {
     toggleElement(divs);
 }
