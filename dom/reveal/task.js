@@ -1,7 +1,7 @@
 // узнаем реальную высоту видимой части браузера
 const viewportHeight = window.innerHeight;
 // находим необходим элемент div
-const div = document.querySelector('.reveal');
+const divs = document.querySelectorAll('.reveal');
 
 // задаем функцию проверки - попал ли элемент div в область видимости
 let isInViewport = function(element) {
@@ -11,20 +11,33 @@ let isInViewport = function(element) {
     // console.log(elementBottom);
 
     if ((elementTop < viewportHeight) && (elementBottom > 0)) {
-        // console.log(true);
+        console.log(true);
         return true;
     } else {
-        // console.log(false);
+        console.log(false);
         return false;
     }
 };
 
 // задаем функцию проверки видимости элемента при скроллинге страницы
-window.onscroll = function() {
-    if (isInViewport(div) === true) {
-        div.classList.toggle('reveal_active');
-    } else {
-        div.classList.toggle('reveal_active');
+
+function toggleElement(collection) {
+
+    for (i = 0; i < collection.length; i++) {
+        if (isInViewport(collection[i]) === true) {
+            collection[i].classList.toggle('reveal_active');
+            console.log(`Появился ${i+1}`)
+        } else {
+            collection[i].classList.toggle('reveal_active');
+            console.log(`Скрылся ${i+1}`)
+        }
     }
 }
+
+window.onscroll = function() {
+    toggleElement(divs);
+}
+
+    
+
 
