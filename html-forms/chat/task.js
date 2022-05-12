@@ -4,7 +4,7 @@ const messages = document.querySelector('.chat-widget__messages');
 const container = document.querySelector('.chat-widget__messages-container');
 let inaction;
 
-// Запишем возможные грубые ответы боты
+// Запишем возможные грубые ответы бота
 let botResponse = [
     'Добрый день и досвидания!',
     'Вы что-то написали?',
@@ -14,7 +14,7 @@ let botResponse = [
     'Отстаньте!',
 ]
 
-// Запишем возможные грубые вопросы боты
+// Запишем возможные грубые вопросы бота
 let botQuestion = [
     'Мы просто так вас ждем?!',
     'Вы что-то будете писать?',
@@ -90,7 +90,7 @@ function checkSpace(text) {
 // Подписываемся на события по отправке сообщения через клавишу ENTER
 chatInput.addEventListener('keydown', e => {
     
-    // Првоеряем какая кнока нажата, если ENTER (13), то отправляем сообщении
+    // Првоеряем какая кнопка нажата, если ENTER (13), то отправляем сообщении
     if (e.keyCode === 13) {
 
         // Так как мы нажали ENTER, значит мы не бездействуем, очищаем интервал.
@@ -109,6 +109,9 @@ chatInput.addEventListener('keydown', e => {
             </div>
             </div>
             `;
+
+            // Очистка инпута после отправки сообщения
+            chatInput.value = '';
 
             // Прокрутка скролла вниз после сообщения пользака
             container.scrollTop = container.scrollHeight;
