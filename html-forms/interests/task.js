@@ -1,23 +1,26 @@
-const interestsCheckbox = document.querySelectorAll('li.interest > ul.interests');
-console.log(interestsCheckbox);
+// Находим все чекбоксы
+const allCheckbox = document.querySelectorAll('.interest__check');
 
-const parent = interestsCheckbox[0].closest('.interests');
-console.log(parent);
+// Создаем функцию смены чекбокса
+const switchCheckbox = function() {
+    // Ищем коллекцию дочерних чекбоксов под главным чекбоксом
+    const activeCheckbox = this.closest('.interest').querySelector('.interests_active').querySelectorAll('.interest__check');
 
-for (i = 0; i < interestsCheckbox.length; i++) {
+    // Очищаем все дочерние чекбоксы
+    for ( const checkbox of activeCheckbox ) {
+        checkbox.removeAttribute('checked');
+    }
 
-    interestsCheckbox[i].closest('li.interest').addEventListener('click', () => {
-    
-        // console.log(`Клик на ${this}`)
-        // let parent = interest[i].closest('interests_main');
-        // console.log(parent);
-    
-        // if (parent.className == "interests_main") {
-        //     console.log('Это главная тычка!')
-        // } else {
-        //     console.log('Это не главная тычка')
-        // }
-    
-    });
-
+    // Если главный чекбокс активирован, то активируем все дочерние чекбоксы
+    if (this.checked == 1) {
+        for ( const checkbox of activeCheckbox ) {
+            checkbox.setAttribute('checked', 'checked');
+        }
+    }
 }
+
+// Подписываемся на события клика на каждый чекбокс   
+for ( const checkbox of allCheckbox ) {
+    checkbox.addEventListener('click', switchCheckbox);
+}
+
