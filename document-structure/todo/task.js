@@ -29,7 +29,7 @@ buttonInput.addEventListener('click', () => {
 
     
     // Проверка на пустое название задачи
-    if (checkSpace(taskInput) == false) {
+    if (taskInput.value.trim()) {
         // Если инпут не пустой, то добавляем созданную задачу в список
         tasksList.insertAdjacentElement('afterbegin', task);
 
@@ -47,20 +47,5 @@ buttonInput.addEventListener('click', () => {
     taskInput.value = '';
 
 });
-
-// Вспомогательная функция проверки текста на пустоту и пробелы
-function checkSpace(text) {
-
-    // Отсекаем всевозможные пробелы
-    text.value = text.value.trim();
-
-    // Проверяем на пустоту. Если пусто, то true
-    if (text.value == '') {
-        return true;
-    } 
-    
-    // Если не пусто, то false
-    return false;
-};
 
 
