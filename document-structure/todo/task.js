@@ -1,12 +1,14 @@
+// Ищем форму
+const taskForm = document.getElementById('tasks__form');
 // Ищем инпут для ввода названия задачи
 const taskInput = document.getElementById('task__input');
-// Ищем кнопку для добавления задачи
-const buttonInput = document.getElementById('tasks__add');
 // Ищем список всех задач
 const tasksList = document.getElementById('tasks__list');
 
-// Вешаем событие на кнопку отправки задачи в список по клику
-buttonInput.addEventListener('click', () => {
+// Подписываемся рна событие отправки формы
+taskForm.addEventListener('submit', action);
+
+function action(event) {
 
     // создаем общий div задачи
     let task = document.createElement('div');
@@ -46,6 +48,5 @@ buttonInput.addEventListener('click', () => {
     // Очистка инпута после отправки задачи в список
     taskInput.value = '';
 
-});
-
-
+    event.preventDefault();
+}
