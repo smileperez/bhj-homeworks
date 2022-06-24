@@ -60,45 +60,39 @@ for (let kdx = 0; kdx < addButtons.length; kdx++) {
         cartProduct.insertAdjacentElement('afterbegin', cartProductImage);
         cartProduct.insertAdjacentElement('beforeend', cartProductCount);
 
-        // Получаем список всех товаров к орзине
+        // Получаем список всех товаров к корзине
         let cartProducts = document.querySelectorAll('.cart__product');
+        let cartProductsArr = [];
+        for(let i in cartProducts) cartProductsArr[i] = cartProducts[i];
+        console.log(cartProductsArr);
 
         // Проверка на наличие товара в корзине
-        if (cartProducts.length === 0) {
-            // Так как прошла проверка на пустую корзину, то добавляем полноценную карточку товара в корзину
-            cartList.insertAdjacentElement('beforeend', cartProduct);
-            console.log('Товара в корзине еще не было - добавляем первый товар');
-        } else {
-            // Задаем флаг поиска товара
-            let counter = null;
-            // Запускаем цикл проверки всех товаров на наличие в корзине
-            for (let mdx = 0; mdx < cartProducts.length; mdx++) {
-                // Если мы нашли товар, то поднимаем флаг и указаываем на его номер в массиве
-                if (cartProducts[mdx].getAttribute('data-id') == dataId) {
-                    counter = mdx;
-                    console.log('Цикл проверки товара: Такой товар нашелся в корзине')
-                // Если товара не нашли, ничего не делаем
-                } else {
-                    console.log('Цикл проверки товара: Такого товара не нашлось в корзине')
-                }
-            }
+        let counter = null;
 
-            // Проверка на наличие товара в корзине
-            // Так как товара не нашлось (null) то доабвляем новый товар в корзину
-            if (counter === null) {
-                // Так как такого товара в корзине еще не было, то 
-                // Добавляем полноценную карточку товара в корзину
-                cartList.insertAdjacentElement('beforeend', cartProduct);
-                console.log('Корзина: Такого товара еще не было в корзине - добавляем его');
-                // Не забываем обнулить флаг
-                counter = null;
-            // Так как товар нашел в корзине (!= null), то только изменяем его количество
+        function findProduct(element, idx) {
+            if (element.getAttribute('data-id') == dataId) {
+                counter = idx;
+                console.log('Цикл проверки товара: Такой товар нашелся в корзине')
             } else {
-                // Так как товар с таким же артикулом нашелся, то изменяем его количество
-                cartProducts[counter].querySelector('.cart__product-count').innerText = n;
-                console.log('Корзина: Такой товар уже есть в корзине, изменяем его количество');
+                console.log('Цикл проверки товара: Такого товара не нашлось в корзине')
             }
+        }
+        cartProductsArr.find(findProduct);
 
+
+        // Так как товара не нашлось (null) то добавляем новый товар в корзину
+        if (counter === null) {
+            // Так как такого товара в корзине еще не было, то 
+            // Добавляем полноценную карточку товара в корзину
+            cartList.insertAdjacentElement('beforeend', cartProduct);
+            console.log('Корзина: Такого товара еще не было в корзине - добавляем его');
+            // Не забываем обнулить флаг
+            counter = null;
+        // Так как товар нашел в корзине (!= null), то только изменяем его количество
+        } else {
+            // Так как товар с таким же артикулом нашелся, то изменяем его количество
+            cartProducts[counter].querySelector('.cart__product-count').innerText = n;
+            console.log('Корзина: Такой товар уже есть в корзине, изменяем его количество');
         }
     }
 }
