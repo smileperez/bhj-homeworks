@@ -33,7 +33,6 @@ for (let idx = 0; idx < hasToolkit.length; idx++) {
         toolkits[idx].style.left = left + 'px';
         toolkits[idx].style.top = top + 'px';
         
-
         // Включаем активную подсказку при клике
         if (toolkits[idx].classList.contains("tooltip_active")) {
             closeToolkits();
