@@ -91,7 +91,9 @@ for (let kdx = 0; kdx < addButtons.length; kdx++) {
         // Так как товар нашел в корзине (!= null), то только изменяем его количество
         } else {
             // Так как товар с таким же артикулом нашелся, то изменяем его количество
-            cartProducts[counter].querySelector('.cart__product-count').innerText = n;
+            let newN =  cartProducts[counter].querySelector('.cart__product-count').innerText;
+            newN = Number(newN) + Number(n);
+            cartProducts[counter].querySelector('.cart__product-count').innerText = newN;
             console.log('Корзина: Такой товар уже есть в корзине, изменяем его количество');
         }
     }
